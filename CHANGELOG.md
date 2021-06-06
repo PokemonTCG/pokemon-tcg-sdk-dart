@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.1.0
 
-* TODO: Describe initial release.
+* Initial release 🎉 contains the `getSets()` and `getSet()` functions
