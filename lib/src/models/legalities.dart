@@ -1,5 +1,6 @@
 import 'package:pokemon_tcg/src/type_aliases.dart';
 
+/// Defines the details regarding card set legality
 class SetLegalities {
   SetLegalities({
     required this.unlimited,
@@ -13,6 +14,13 @@ class SetLegalities {
     );
   }
 
+  /// Whether this set is legal for Unlimited play
+  ///
+  /// Example: "legal"
   final String? unlimited;
+
+  /// Whether this set is legal for Expanded play
+  ///
+  /// Example: "legal"
   final String? expanded;
 }
