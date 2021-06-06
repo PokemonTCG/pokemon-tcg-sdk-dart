@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokemon_tcg/src/models/set.dart';
 import 'package:pokemon_tcg/src/type_aliases.dart';
@@ -33,7 +32,7 @@ class PokemonTcgApi {
   }
 
   Future<CardSet> getSet(String setId) async {
-    final response =  await http.get(
+    final response = await http.get(
       Uri.parse('$_setsUrl/$setId'),
       headers: {
         'x-api-key': apiKey,
