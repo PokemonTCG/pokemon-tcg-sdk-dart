@@ -39,8 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: Text('Get set'),
               onPressed: () async {
-                final response = await api.getSets();
-                print(response.body);
+                final set = await api.getSet('swsh5');
+                print(set.id);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get sets'),
+              onPressed: () async {
+                final sets = await api.getSets();
+                print(sets.length);
               },
             ),
           ],
