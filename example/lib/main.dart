@@ -68,6 +68,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
+            ElevatedButton(
+              child: Text('Get supertypes'),
+              onPressed: () async {
+                final types = await api.getSupertypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
           ],
         ),
       ),
