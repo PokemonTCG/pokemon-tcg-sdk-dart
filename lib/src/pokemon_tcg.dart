@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:pokemon_tcg/src/models/card_type.dart';
 import 'package:pokemon_tcg/src/models/elemental_type.dart';
 import 'package:pokemon_tcg/src/models/set.dart';
 import 'package:pokemon_tcg/src/type_aliases.dart';
@@ -60,6 +61,25 @@ class PokemonTcgApi {
     final json = jsonDecode(response.body);
     json['data'].forEach((type) {
       types.add(ElementalType(type: type));
+    });
+
+    return types;
+  }
+
+  /// Get All Subtypes
+  Future<List<Subtype>> getSubtypes() async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl/subtypes'),
+      headers: {
+        'x-api-key': apiKey,
+      },
+    );
+
+    final types = <Subtype>[];
+
+    final json = jsonDecode(response.body);
+    json['data'].forEach((type) {
+      types.add(Subtype(type: type));
     });
 
     return types;

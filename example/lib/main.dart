@@ -59,6 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
+            ElevatedButton(
+              child: Text('Get subtypes'),
+              onPressed: () async {
+                final types = await api.getSubtypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
           ],
         ),
       ),
