@@ -77,6 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
+            ElevatedButton(
+              child: Text('Get rarities'),
+              onPressed: () async {
+                final types = await api.getRarities();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
           ],
         ),
       ),

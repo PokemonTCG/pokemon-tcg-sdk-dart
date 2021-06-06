@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:pokemon_tcg/src/models/rarity.dart';
 import 'package:pokemon_tcg/src/models/subtype.dart';
 import 'package:pokemon_tcg/src/models/elemental_type.dart';
 import 'package:pokemon_tcg/src/models/set.dart';
@@ -89,7 +90,7 @@ class PokemonTcgApi {
   /// Get All Supertypes
   Future<List<Supertype>> getSupertypes() async {
     final response = await http.get(
-      Uri.parse('$_baseUrl/subtypes'),
+      Uri.parse('$_baseUrl/supertypes'),
       headers: {
         'x-api-key': apiKey,
       },
@@ -100,6 +101,25 @@ class PokemonTcgApi {
     final json = jsonDecode(response.body);
     json['data'].forEach((type) {
       types.add(Supertype(type: type));
+    });
+
+    return types;
+  }
+
+  /// Get All Rarities
+  Future<List<Rarity>> getRarities() async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl/rarities'),
+      headers: {
+        'x-api-key': apiKey,
+      },
+    );
+
+    final types = <Rarity>[];
+
+    final json = jsonDecode(response.body);
+    json['data'].forEach((type) {
+      types.add(Rarity(type: type));
     });
 
     return types;
