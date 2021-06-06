@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:pokemon_tcg/src/models/elemental_type.dart';
 import 'package:pokemon_tcg/src/models/set.dart';
 import 'package:pokemon_tcg/src/type_aliases.dart';
 
@@ -14,6 +15,7 @@ class PokemonTcgApi {
   static const _baseUrl = 'https://api.pokemontcg.io/v2';
   static const _setsUrl = '$_baseUrl/sets';
 
+  /// Get All Sets
   Future<CardSets> getSets() async {
     final response = await http.get(
       Uri.parse(_setsUrl),
@@ -31,6 +33,7 @@ class PokemonTcgApi {
     return cardSets;
   }
 
+  /// Returns a specific set by the set code
   Future<CardSet> getSet(String setId) async {
     final response = await http.get(
       Uri.parse('$_setsUrl/$setId'),
@@ -41,5 +44,24 @@ class PokemonTcgApi {
 
     final json = jsonDecode(response.body);
     return CardSet.fromJson(json['data']);
+  }
+
+  /// Get All Types
+  Future<List<ElementalType>> getTypes() async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl/types'),
+      headers: {
+        'x-api-key': apiKey,
+      },
+    );
+
+    final types = <ElementalType>[];
+
+    final json = jsonDecode(response.body);
+    json['data'].forEach((type) {
+      types.add(ElementalType(type: type));
+    });
+
+    return types;
   }
 }
