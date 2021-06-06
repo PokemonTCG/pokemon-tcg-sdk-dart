@@ -15,11 +15,17 @@ final api = PokemonTcgApi(apiKey: 'your_api_key');
 ### Available functions:
 * `getSets()`
 * `getSet('set_id')` // example: 'swsh5'
+* `getTypes()`
+* `getSubtypes()`
+* `getSupertypes()`
+* `getRarities()`
 
 ## Roadmap
+- [X] `/sets`
+- [X] `/sets/:id`
 - [ ] `/cards`
 - [ ] `/cards/:id`
-- [ ] `/types`
-- [ ] `/subtypes`
-- [ ] `/supertypes`
-- [ ] `/rarities`
+- [X] `/types`
+- [X] `/subtypes`
+- [X] `/supertypes`
+- [X] `/rarities`
