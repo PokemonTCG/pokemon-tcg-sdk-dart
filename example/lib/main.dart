@@ -50,6 +50,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(sets.length);
               },
             ),
+            ElevatedButton(
+              child: Text('Get types'),
+              onPressed: () async {
+                final types = await api.getTypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get subtypes'),
+              onPressed: () async {
+                final types = await api.getSubtypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get supertypes'),
+              onPressed: () async {
+                final types = await api.getSupertypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get rarities'),
+              onPressed: () async {
+                final types = await api.getRarities();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
           ],
         ),
       ),
