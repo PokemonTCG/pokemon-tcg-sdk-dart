@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:pokemon_tcg/src/models/card_type.dart';
+import 'package:pokemon_tcg/src/models/subtype.dart';
 import 'package:pokemon_tcg/src/models/elemental_type.dart';
 import 'package:pokemon_tcg/src/models/set.dart';
 import 'package:pokemon_tcg/src/type_aliases.dart';
