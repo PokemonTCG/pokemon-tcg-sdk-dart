@@ -1,17 +1,33 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'dart:convert';
+import 'dart:io';
 
-import 'package:pokemon_tcg/pokemon_tcg.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:pokemon_tcg/src/models/set.dart';
+import 'package:pokemon_tcg/src/type_aliases.dart';
 
 void main() {
-  final api = PokemonTcgApi(apiKey: '56760a2e-f5cc-4d5d-9486-1165253e1c9b');
+  File setsFile = File('test/data/sets.json');
+  File setFile = File('test/data/set.json');
+  late CardSet battleStyles;
+  CardSets allSets = [];
 
-  test('Get sets', () async {
-    final sets = await api.getSets();
-    expect(sets.length, 122);
+  setUp(() async {
+    final set = await setFile.readAsString();
+    final sets = await setsFile.readAsString();
+    battleStyles = CardSet.fromJson(jsonDecode(set)['data']);
+    List setsList = jsonDecode(sets)['data'];
+    setsList.forEach((element) {
+      allSets.add(CardSet.fromJson(element));
+    });
   });
 
-  test('Get sets', () async {
-    final response = await api.getSet('swsh5');
-    expect(response.id, 'swsh5');
+  group('Model tests', () {
+    test('Get sets', () async {
+      expect(allSets.length, 122);
+    });
+
+    test('Get sets', () async {
+      expect(battleStyles.id, 'swsh5');
+    });
   });
 }
