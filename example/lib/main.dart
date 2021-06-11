@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final api = PokemonTcgApi(apiKey: '56760a2e-f5cc-4d5d-9486-1165253e1c9b');
+  final api = PokemonTcgApi(apiKey: 'your_key_here');
 
   @override
   Widget build(BuildContext context) {
