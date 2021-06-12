@@ -27,7 +27,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final api = PokemonTcgApi(apiKey: '56760a2e-f5cc-4d5d-9486-1165253e1c9b');
+  final api = PokemonTcgApi(apiKey: 'your_api_key_here');
+  late final paginatedCardsAll = PaginatedPokemonCards([], api);
+  late final paginatedCardsSwsh5 = PaginatedPokemonCards([], api);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +39,74 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             ElevatedButton(
+              child: Text('Get cards'),
+              onPressed: () async {
+                await paginatedCardsAll.loadMore(page: 1);
+                print(paginatedCardsAll.cards);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get cards for set'),
+              onPressed: () async {
+                await paginatedCardsAll.loadMoreForSet('swsh5');
+                print(paginatedCardsAll.cards);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get card'),
+              onPressed: () async {
+                final card = await api.getCard('xy7-54');
+                print(card.tcgPlayer);
+              },
+            ),
+            ElevatedButton(
               child: Text('Get set'),
               onPressed: () async {
-                final response = await api.getSets();
-                print(response.body);
+                final set = await api.getSet('swsh5');
+                print(set.id);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get sets'),
+              onPressed: () async {
+                final sets = await api.getSets();
+                print(sets.length);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get types'),
+              onPressed: () async {
+                final types = await api.getTypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get subtypes'),
+              onPressed: () async {
+                final types = await api.getSubtypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get supertypes'),
+              onPressed: () async {
+                final types = await api.getSupertypes();
+                types.forEach((element) {
+                  print(element.type);
+                });
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get rarities'),
+              onPressed: () async {
+                final types = await api.getRarities();
+                types.forEach((element) {
+                  print(element.type);
+                });
               },
             ),
           ],
