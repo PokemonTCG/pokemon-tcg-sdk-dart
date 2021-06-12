@@ -1,6 +1,6 @@
 # pokemon_tcg
 
-A Dart SDK for the Pokemon TCG Developers API. An API key is required to use.
+The official Dart SDK for the Pokemon TCG Developers API. An API key is required to use.
 
 ## Usage
 
