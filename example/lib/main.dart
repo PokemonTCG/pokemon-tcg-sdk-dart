@@ -28,6 +28,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final api = PokemonTcgApi(apiKey: 'your_api_key_here');
+  late final paginatedCardsAll = PaginatedPokemonCards([], api);
+  late final paginatedCardsSwsh5 = PaginatedPokemonCards([], api);
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,20 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            ElevatedButton(
+              child: Text('Get cards'),
+              onPressed: () async {
+                await paginatedCardsAll.loadMore(page: 1);
+                print(paginatedCardsAll.cards);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Get cards for set'),
+              onPressed: () async {
+                await paginatedCardsAll.loadMoreForSet('swsh5');
+                print(paginatedCardsAll.cards);
+              },
+            ),
             ElevatedButton(
               child: Text('Get card'),
               onPressed: () async {

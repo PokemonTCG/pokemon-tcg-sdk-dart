@@ -1,3 +1,7 @@
+## 1.0.0
+* All endpoints implemented 🎉
+* Make some fields nullable in card.dart
+
 ## 0.3.0
 * Add `getCard()` functions
 

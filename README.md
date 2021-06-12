@@ -12,7 +12,11 @@ final api = PokemonTcgApi(apiKey: 'your_api_key');
 ```
 4. Use according to your needs
 
+Note: When using `getCards()` and `getCardsForSet()` you should use the `PaginatedPokemonCards` class.
+
 ### Available functions:
+* `getCards()`
+* `getCardsForSet('set_id')`
 * `getCard('card_id')` // example 'xy7-54'
 * `getSets()`
 * `getSet('set_id')` // example: 'swsh5'
@@ -21,10 +25,10 @@ final api = PokemonTcgApi(apiKey: 'your_api_key');
 * `getSupertypes()`
 * `getRarities()`
 
-## Roadmap
+## Roadmap 🚀
 - [X] `/sets`
 - [X] `/sets/:id`
-- [ ] `/cards`
+- [X] `/cards`
 - [X] `/cards/:id`
 - [X] `/types`
 - [X] `/subtypes`
