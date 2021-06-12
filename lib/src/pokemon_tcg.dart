@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:pokemon_tcg/src/models/card.dart';
 import 'package:pokemon_tcg/src/models/rarity.dart';
 import 'package:pokemon_tcg/src/models/subtype.dart';
 import 'package:pokemon_tcg/src/models/elemental_type.dart';
@@ -17,6 +18,19 @@ class PokemonTcgApi {
 
   static const _baseUrl = 'https://api.pokemontcg.io/v2';
   static const _setsUrl = '$_baseUrl/sets';
+
+  /// Gets a single pokemon card based on the card ID (e.g. 'xy7-54')
+  Future<PokemonCard> getCard(String cardId) async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl/cards/$cardId'),
+      headers: {
+        'x-api-key': apiKey,
+      },
+    );
+
+    final json = jsonDecode(response.body);
+    return PokemonCard.fromJson(json['data']);
+  }
 
   /// Get All Sets
   Future<CardSets> getSets() async {
