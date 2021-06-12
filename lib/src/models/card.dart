@@ -109,15 +109,15 @@ class PokemonCard {
   final String id;
   final String name;
   final Supertype supertype;
-  final String hp;
-  final String evolvesFrom;
+  final String? hp;
+  final String? evolvesFrom;
   final SetLegalities legalities;
-  final String rarity;
+  final String? rarity;
   final String number;
-  final String artist;
-  final int convertedRetreatCost;
+  final String? artist;
+  final int? convertedRetreatCost;
   final CardSet set;
-  final String flavorText;
+  final String? flavorText;
   final List<int> nationalPokedexNumbers;
   final List<ElementalType> types;
   final List<Subtype> subtypes;
@@ -178,7 +178,7 @@ class Attack {
   final String name;
   final List<String> cost;
   final int convertedEnergyCost;
-  final String damage;
+  final String? damage;
   final String text;
 }
 
