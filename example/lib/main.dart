@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final api = PokemonTcgApi(apiKey: 'your_key_here');
+  final api = PokemonTcgApi(apiKey: 'your_api_key_here');
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            ElevatedButton(
+              child: Text('Get card'),
+              onPressed: () async {
+                final card = await api.getCard('xy7-54');
+                print(card.tcgPlayer);
+              },
+            ),
             ElevatedButton(
               child: Text('Get set'),
               onPressed: () async {
