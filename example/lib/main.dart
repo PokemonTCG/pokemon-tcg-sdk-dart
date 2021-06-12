@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final api = PokemonTcgApi(apiKey: '0f6943a2-032e-4a3a-8b4b-25a5075673ac');
+  final api = PokemonTcgApi(apiKey: 'your_api_key_here');
   late final paginatedCardsAll = PaginatedPokemonCards([], api);
   late final paginatedCardsSwsh5 = PaginatedPokemonCards([], api);
 
