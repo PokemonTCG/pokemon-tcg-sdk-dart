@@ -1,6 +1,6 @@
 name: pokemon_tcg
 description: A Dart SDK for the Pokemon TCG Developers API. An API key is required to use.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/PokemonTCG/pokemon-tcg-sdk-dart
 issue_tracker: https://github.com/PokemonTCG/pokemon-tcg-sdk-dart/issues
 
