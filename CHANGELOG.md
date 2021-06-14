@@ -1,3 +1,7 @@
+## 1.0.1
+* Refactor tests
+* Export data models
+
 ## 1.0.0
 * All endpoints implemented 🎉
 * Make some fields nullable in card.dart
