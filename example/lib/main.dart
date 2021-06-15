@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_tcg/pokemon_tcg.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final api = PokemonTcgApi(apiKey: 'your_api_key_here');
+  final api = PokemonTcgApi(
+    apiKey: 'your_api_key_here',
+    client: http.Client(),
+  );
   late final paginatedCardsAll = PaginatedPokemonCards([], api);
   late final paginatedCardsSwsh5 = PaginatedPokemonCards([], api);
 
