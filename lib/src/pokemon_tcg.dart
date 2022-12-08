@@ -36,7 +36,7 @@ class PokemonTcgApi {
       );
     } else {
       response = await client.get(
-        Uri.parse('$_baseUrl/cards?page=$page'),
+        Uri.parse('$_baseUrl/cards?q=$query&page=$page'),
         headers: {
           'x-api-key': apiKey,
         },
