@@ -24,11 +24,12 @@ class PokemonTcgApi {
   /// Gets a paginated list of all pokemon cards.
   Future<List<PokemonCard>> getCards({
     int page = 0,
+    String query = '',
   }) async {
     http.Response response;
     if (page == 0) {
       response = await client.get(
-        Uri.parse('$_baseUrl/cards'),
+        Uri.parse('$_baseUrl/cards?q=$query'),
         headers: {
           'x-api-key': apiKey,
         },
