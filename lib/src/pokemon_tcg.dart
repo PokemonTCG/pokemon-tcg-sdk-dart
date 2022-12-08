@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:isolate';
 
 import 'package:http/http.dart' as http;
 import 'package:pokemon_tcg/src/models/card.dart';
@@ -21,7 +22,7 @@ class PokemonTcgApi {
   static const _baseUrl = 'https://api.pokemontcg.io/v2';
   static const _setsUrl = '$_baseUrl/sets';
 
-  /// Gets a paginated list of all pokemon cards.
+  /// Gets a paginated list of all pokemon cards by default, with an optional search parameter.
   Future<List<PokemonCard>> getCards({
     int page = 0,
     String query = '',
@@ -44,6 +45,9 @@ class PokemonTcgApi {
     }
 
     JsonMap json = jsonDecode(response.body);
+    if (json['error']) {
+      throw RemoteError('Invalid search parameter', json['error']);
+    }
     final cards = <PokemonCard>[];
     List<dynamic> cardsJson = json['data'];
     cardsJson.forEach((element) {
