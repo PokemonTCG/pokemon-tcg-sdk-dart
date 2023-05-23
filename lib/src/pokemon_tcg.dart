@@ -46,7 +46,7 @@ class PokemonTcgApi {
 
     JsonMap json = jsonDecode(response.body);
     if (json.containsKey("error")) {
-      throw RemoteError('Invalid search parameter', json['error']);
+      throw RemoteError('Invalid search parameter', json['error']['message']);
     }
     final cards = <PokemonCard>[];
     List<dynamic> cardsJson = json['data'];
